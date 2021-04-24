@@ -1,7 +1,7 @@
 //This code was supplied by Dom during his office hours and 
 //therefore could be similar to other student's code
 function DrawBargraph(sampleid) {
-    d3.json("../../data/samples.json").then(data => {
+    d3.json("../data/samples.json").then(data => {
         var samples = data.samples;
         var resultsArray = samples.filter(s => s.id == sampleid);
         var result = resultsArray[0];
@@ -26,7 +26,7 @@ function DrawBargraph(sampleid) {
 }
 
 function DrawBubbleChart(sampleid) {
-    d3.json("../../data/samples.json").then(data => {
+    d3.json("../data/samples.json").then(data => {
         var samples = data.samples;
         var resultsArray = samples.filter(s => s.id == sampleid);
         var result = resultsArray[0];
@@ -53,7 +53,7 @@ function DrawBubbleChart(sampleid) {
 }
 
 function ShowMetaData(sampleid) {
-    d3.json("../../data/samples.json").then(data => {
+    d3.json("../data/samples.json").then(data => {
         var metadata = data.metadata;
         var resultsArray = metadata.filter(m => m.id == sampleid);
         var result = resultsArray[0];
@@ -72,7 +72,7 @@ function optionChanged(newsampleid){
 function InitDashboard(){
     //Populate dropdown
     var selector = d3.select("#selDataset");
-    d3.json("samples.json").then(data => {
+    d3.json("../data/samples.json").then(data => {
         var samplenames = data.names;
         samplenames.forEach(sampleID => {
             selector.append("option").text(sampleID).property("value", sampleID);
