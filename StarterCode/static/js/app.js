@@ -61,7 +61,6 @@ function ShowMetaData(sampleid) {
         for (const [key, value] of Object.entries(result)) {
             metadatastring += `${key}: ${value} <br>`;
         };
-        console.log(metadatastring);
         d3.select("#sample-metadata").html(metadatastring);
     });
 }
@@ -74,7 +73,6 @@ function InitDashboard(){
     //Populate dropdown
     var selector = d3.select("#selDataset");
     d3.json("samples.json").then(data => {
-        console.log(data);
         var samplenames = data.names;
         samplenames.forEach(sampleID => {
             selector.append("option").text(sampleID).property("value", sampleID);
