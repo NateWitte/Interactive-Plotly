@@ -32,6 +32,7 @@ function DrawBubbleChart(sampleid) {
         var result = resultsArray[0];
         var otu_ids = result.otu_ids;
         var otu_labels = result.otu_labels;
+        console.log(otu_labels);
         var sample_values = result.sample_values;
         var bubbleData = {
             x: otu_ids,
@@ -45,7 +46,7 @@ function DrawBubbleChart(sampleid) {
         }
         var bubbleArray = [bubbleData];
         var bubbleLayout = {
-            title: "Top 10 Bacteria Cultures Found",
+            title: "Bacteria Cultures Found by Size",
             margin: {t: 30, l: 150}
         }
         Plotly.newPlot("bubble", bubbleArray, bubbleLayout);
