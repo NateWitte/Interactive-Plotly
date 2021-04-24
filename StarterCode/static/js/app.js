@@ -32,7 +32,6 @@ function DrawBubbleChart(sampleid) {
         var result = resultsArray[0];
         var otu_ids = result.otu_ids;
         var otu_labels = result.otu_labels;
-        console.log(otu_labels);
         var sample_values = result.sample_values;
         var bubbleData = {
             x: otu_ids,
@@ -54,7 +53,14 @@ function DrawBubbleChart(sampleid) {
 }
 
 function ShowMetaData(sampleid) {
-    console.log(sampleid);
+    d3.json("../../data/samples.json").then(data => {
+        var metadata = data.metadata;
+        var resultsArray = metadata.filter(m => m.id == sampleid);
+        var result = resultsArray[0];
+        for (const [key, value] of Object.entries(result)) {
+            d3.select("#sample-metadata").innerHTML += `${key}: ${value}`;
+          }
+    });
 }
 function optionChanged(newsampleid){
     DrawBargraph(newsampleid);
