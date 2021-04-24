@@ -57,9 +57,12 @@ function ShowMetaData(sampleid) {
         var metadata = data.metadata;
         var resultsArray = metadata.filter(m => m.id == sampleid);
         var result = resultsArray[0];
+        var metadatastring = "";
         for (const [key, value] of Object.entries(result)) {
-            d3.select("#sample-metadata").innerHTML += `${key}: ${value}`;
-          }
+            metadatastring += `${key}: ${value} <br>`;
+        };
+        console.log(metadatastring);
+        d3.select("#sample-metadata").html(metadatastring);
     });
 }
 function optionChanged(newsampleid){
